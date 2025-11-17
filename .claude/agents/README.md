@@ -1,6 +1,37 @@
-# Agents
+# Agents | 代理
 
 Specialized agents for complex, multi-step tasks.
+
+---
+
+## 繁體中文說明 | Traditional Chinese Documentation
+
+本文檔介紹 Claude Code 的專業代理系統。代理是自主的 Claude 實例，專門處理複雜的多步驟任務。
+
+**核心概念：**
+- 代理是獨立運行的子任務處理器
+- 每個代理都有專門的工具訪問權限
+- 代理完成任務後會返回綜合報告
+- 只需複製 `.md` 文件即可立即使用
+
+**與技能的區別：**
+- 代理：用於需要多步驟、複雜分析的任務（例如：審查所有控制器）
+- 技能：提供內聯指導，適合正在進行的開發工作（例如：創建新路由）
+
+**可用的 10 個代理：**
+1. **code-architecture-reviewer** - 審查代碼架構一致性
+2. **code-refactor-master** - 計劃和執行全面重構
+3. **documentation-architect** - 創建綜合文檔
+4. **frontend-error-fixer** - 調試和修復前端錯誤
+5. **plan-reviewer** - 在實施前審查開發計劃
+6. **refactor-planner** - 創建重構策略
+7. **web-research-specialist** - 在線研究技術問題
+8. **auth-route-tester** - 測試認證 API 端點
+9. **auth-route-debugger** - 調試認證問題
+10. **auto-error-resolver** - 自動修復 TypeScript 編譯錯誤
+
+**集成方式：**
+大多數代理只需複製 `.md` 文件到您的項目即可使用，無需任何配置。
 
 ---
 

@@ -3,7 +3,88 @@ name: backend-dev-guidelines
 description: Comprehensive backend development guide for Node.js/Express/TypeScript microservices. Use when creating routes, controllers, services, repositories, middleware, or working with Express APIs, Prisma database access, Sentry error tracking, Zod validation, unifiedConfig, dependency injection, or async patterns. Covers layered architecture (routes → controllers → services → repositories), BaseController pattern, error handling, performance monitoring, testing strategies, and migration from legacy patterns.
 ---
 
-# Backend Development Guidelines
+# Backend Development Guidelines | 後端開發指南
+
+## 繁體中文說明 | Traditional Chinese Documentation
+
+**技能名稱：** backend-dev-guidelines（後端開發指南）
+
+**用途：** 為 Node.js/Express/TypeScript 微服務提供全面的開發指南
+
+**何時自動激活：**
+- 創建或修改路由、端點、API
+- 構建控制器、服務、存儲庫
+- 實施中間件（認證、驗證、錯誤處理）
+- 使用 Prisma 進行數據庫操作
+- 使用 Sentry 進行錯誤跟踪
+- 使用 Zod 進行輸入驗證
+- 配置管理
+- 後端測試和重構
+
+**核心架構：分層架構（Layered Architecture）**
+```
+HTTP 請求
+    ↓
+路由層 (Routes) - 僅負責路由
+    ↓
+控制器層 (Controllers) - 處理請求
+    ↓
+服務層 (Services) - 業務邏輯
+    ↓
+存儲庫層 (Repositories) - 數據訪問
+    ↓
+數據庫 (Prisma)
+```
+
+**7 個核心原則：**
+1. **路由只負責路由，控制器負責控制** - 不要在路由中寫業務邏輯
+2. **所有控制器繼承 BaseController** - 統一的錯誤處理和響應格式
+3. **所有錯誤發送到 Sentry** - 完整的錯誤跟踪
+4. **使用 unifiedConfig，永不直接使用 process.env** - 集中配置管理
+5. **使用 Zod 驗證所有輸入** - 類型安全的輸入驗證
+6. **使用存儲庫模式進行數據訪問** - 服務 → 存儲庫 → 數據庫
+7. **需要全面的測試** - 單元測試和集成測試
+
+**目錄結構：**
+```
+service/src/
+├── config/              # UnifiedConfig
+├── controllers/         # 請求處理器
+├── services/            # 業務邏輯
+├── repositories/        # 數據訪問
+├── routes/              # 路由定義
+├── middleware/          # Express 中間件
+├── types/               # TypeScript 類型
+├── validators/          # Zod 模式
+├── utils/               # 工具函數
+├── tests/               # 測試
+├── instrument.ts        # Sentry（第一個導入）
+├── app.ts               # Express 設置
+└── server.ts            # HTTP 服務器
+```
+
+**資源文件（11 個）：**
+1. architecture-overview.md - 架構概述
+2. routing-and-controllers.md - 路由和控制器
+3. services-and-repositories.md - 服務和存儲庫
+4. validation-patterns.md - 驗證模式
+5. sentry-and-monitoring.md - Sentry 和監控
+6. middleware-guide.md - 中間件指南
+7. database-patterns.md - 數據庫模式
+8. configuration.md - 配置管理
+9. async-and-errors.md - 異步和錯誤處理
+10. testing-guide.md - 測試指南
+11. complete-examples.md - 完整示例
+
+**要避免的反模式：**
+❌ 在路由中寫業務邏輯
+❌ 直接使用 process.env
+❌ 缺少錯誤處理
+❌ 沒有輸入驗證
+❌ 到處直接使用 Prisma
+❌ 使用 console.log 而不是 Sentry
+
+---
 
 ## Purpose
 
