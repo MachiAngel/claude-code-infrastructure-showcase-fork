@@ -1,6 +1,44 @@
-# Skills
+# Skills | 技能
 
 Production-tested skills for Claude Code that auto-activate based on context.
+
+---
+
+## 繁體中文說明 | Traditional Chinese Documentation
+
+本文檔介紹 Claude Code 的技能系統。技能是根據上下文自動激活的模塊化知識庫。
+
+**核心概念：**
+- 技能在需要時自動加載
+- 提供特定領域的指南、最佳實踐和代碼示例
+- 通過 hooks 和 skill-rules.json 配置自動激活
+
+**問題與解決方案：**
+- 問題：技能默認不會自動激活
+- 解決方案：本項目包含必要的 hooks 和配置使其自動激活
+
+**可用技能：**
+
+1. **skill-developer（元技能）** - 創建和管理 Claude Code 技能的指南
+2. **backend-dev-guidelines** - Node.js/Express/TypeScript 開發模式
+   - 涵蓋：分層架構、BaseController 模式、Prisma、Sentry、Zod 驗證等
+3. **frontend-dev-guidelines** - React/TypeScript/MUI v7 開發模式
+   - 涵蓋：現代 React 模式、Suspense、MUI v7 樣式、TanStack Router 等
+4. **route-tester** - 使用 JWT cookie 認證測試 API 路由
+5. **error-tracking** - Sentry 錯誤跟踪和監控模式
+
+**激活觸發器：**
+技能可以基於以下條件自動激活：
+- 用戶提示中的關鍵詞
+- 意圖模式（正則表達式匹配）
+- 文件路徑模式（編輯特定目錄的文件）
+- 內容模式（代碼包含特定的 import 或模式）
+
+**集成步驟：**
+1. 複製技能目錄到您的項目
+2. 更新 skill-rules.json 中的 pathPatterns 以匹配您的項目結構
+3. 確保 hooks 已安裝並正常工作
+4. 編輯相關文件時技能應自動激活
 
 ---
 

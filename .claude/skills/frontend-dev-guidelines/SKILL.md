@@ -3,7 +3,90 @@ name: frontend-dev-guidelines
 description: Frontend development guidelines for React/TypeScript applications. Modern patterns including Suspense, lazy loading, useSuspenseQuery, file organization with features directory, MUI v7 styling, TanStack Router, performance optimization, and TypeScript best practices. Use when creating components, pages, features, fetching data, styling, routing, or working with frontend code.
 ---
 
-# Frontend Development Guidelines
+# Frontend Development Guidelines | 前端開發指南
+
+## 繁體中文說明 | Traditional Chinese Documentation
+
+**技能名稱：** frontend-dev-guidelines（前端開發指南）
+
+**用途：** 為 React/TypeScript 應用提供現代開發模式的全面指南
+
+**何時自動激活：**
+- 創建新組件或頁面
+- 構建新功能
+- 使用 TanStack Query 獲取數據
+- 使用 TanStack Router 設置路由
+- 使用 MUI v7 樣式化組件
+- 性能優化
+- 組織前端代碼
+- TypeScript 最佳實踐
+
+**核心模式：**
+
+1. **Suspense 和懶加載**
+   - 使用 `React.lazy()` 進行代碼分割
+   - 使用 `<SuspenseLoader>` 處理加載狀態
+   - 不要使用 early return 返回加載組件（會導致佈局偏移）
+
+2. **數據獲取**
+   - 主要模式：`useSuspenseQuery`（與 Suspense 邊界配合使用）
+   - 緩存優先策略
+   - 類型安全的泛型
+
+3. **文件組織**
+   ```
+   features/
+     my-feature/
+       api/          # API 服務層
+       components/   # 功能組件
+       hooks/        # 自定義鉤子
+       helpers/      # 工具函數
+       types/        # TypeScript 類型
+   ```
+
+4. **樣式規範**
+   - <100 行：內聯 `const styles: Record<string, SxProps<Theme>>`
+   - >100 行：獨立的 `.styles.ts` 文件
+   - 使用 MUI v7 Grid：`<Grid size={{ xs: 12, md: 6 }}>`
+
+5. **導入別名**
+   - `@/` → `src/`
+   - `~types` → `src/types`
+   - `~components` → `src/components`
+   - `~features` → `src/features`
+
+**8 個核心原則：**
+1. **懶加載所有重組件** - 路由、DataGrid、圖表、編輯器
+2. **使用 Suspense 處理加載** - 使用 SuspenseLoader，不要 early return
+3. **使用 useSuspenseQuery** - 新代碼的主要數據獲取模式
+4. **功能有組織** - api/、components/、hooks/、helpers/ 子目錄
+5. **基於大小的樣式** - <100 內聯，>100 獨立
+6. **使用導入別名** - @/、~types、~components、~features
+7. **不要 Early Return** - 防止佈局偏移
+8. **使用 useMuiSnackbar** - 所有用戶通知
+
+**資源文件（10 個）：**
+1. component-patterns.md - 組件模式
+2. data-fetching.md - 數據獲取
+3. file-organization.md - 文件組織
+4. styling-guide.md - 樣式指南
+5. routing-guide.md - 路由指南
+6. loading-and-error-states.md - 加載和錯誤狀態
+7. performance.md - 性能優化
+8. typescript-standards.md - TypeScript 標準
+9. common-patterns.md - 常見模式
+10. complete-examples.md - 完整示例
+
+**新組件檢查清單：**
+- [ ] 使用 `React.FC<Props>` 模式
+- [ ] 如果是重組件則懶加載
+- [ ] 包裹在 `<SuspenseLoader>` 中
+- [ ] 使用 `useSuspenseQuery` 獲取數據
+- [ ] 使用導入別名
+- [ ] 對傳遞給子組件的事件處理器使用 `useCallback`
+- [ ] 底部默認導出
+
+---
 
 ## Purpose
 
